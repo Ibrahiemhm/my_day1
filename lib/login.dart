@@ -4,7 +4,11 @@ import 'sign_up.dart';
 import 'dashboard.dart';
 
 class Login extends StatelessWidget {
-  const Login({super.key});
+  Login({super.key});
+
+  String email = "";
+  String password = "";
+  bool incorrect = false;
 
   @override
   Widget build(BuildContext context) {
@@ -12,24 +16,49 @@ class Login extends StatelessWidget {
       appBar: AppBar(title: Text("Login Page")),
       body: Column(
         children: [
+          Image.network(
+            "https://idga.com.ng/wp-content/uploads/2024/09/idga-logo.png",
+          ),
           Text("Welcome to My Day, Login to continue"),
           SizedBox(height: 20),
           Text("Email:"),
-          TextFormField(),
+          TextFormField(
+            onChanged: (value) {
+              email = value;
+            },
+          ),
           SizedBox(height: 10),
           Text("Password:"),
-          TextFormField(obscureText: true),
+          TextFormField(
+            obscureText: true,
+            onChanged: (value) {
+              password = value;
+            },
+          ),
+          SizedBox(height: 20),
+          Visibility(
+            visible: incorrect,
+            child: Text(
+              "Incorrect login details",
+              style: TextStyle(color: Colors.red),
+            ),
+          ),
           SizedBox(height: 20),
           ElevatedButton(
             onPressed: () {
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (context) => Dashboard()),
-                (route) => false,
-              );
+              if (email == "admin@idga.com.ng" && password == "12345678") {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => Dashboard()),
+                  (route) => false,
+                );
+              } else {
+                incorrect = true;
+              }
             },
             child: Text("Submit"),
           ),
+
           SizedBox(height: 20),
           ElevatedButton(
             onPressed: () {

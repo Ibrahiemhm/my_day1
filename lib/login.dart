@@ -19,7 +19,7 @@ class Login extends StatelessWidget {
           Image.network(
             "https://idga.com.ng/wp-content/uploads/2024/09/idga-logo.png",
           ),
-          Text("Welcome to My Day, Login to continue"),
+          Text("Welcome to My Day Application, Login to continue"),
           SizedBox(height: 20),
           Text("Email:"),
           TextFormField(

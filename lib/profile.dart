@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_day/login.dart';
+import 'auth_services.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
@@ -16,6 +17,7 @@ class Profile extends StatelessWidget {
           SizedBox(height: 20),
           ElevatedButton(
             onPressed: () {
+              authServices.value.signout();
               Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(builder: (context) => Login()),
